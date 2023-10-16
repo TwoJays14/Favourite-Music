@@ -6,7 +6,7 @@ import { Song5 } from './Song5';
 
 const Songs = () => {
   return (
-    <article className="bg-gradient-to-t from-slate-900 to-slate-600 text-white">
+    <article className=" text-white">
       <h2 className="font-semibold ml-5 text-2xl py-5">Popular</h2>
       <Song />
       <Song2 />
