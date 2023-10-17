@@ -1,25 +1,29 @@
 import Like from './heart.svg';
 import { useState } from 'react';
-export default function Song4({}) {
+
+export default function Song(props) {
+  const { song } = props;
+
   const [heart, setHeart] = useState(false);
 
   const handleLike = () => {
     setHeart(!heart);
   };
+
   return (
-    <div className="songListContainer w-full">
-      <div className="song flex justify-between p-4 w-3/4">
+    <div className="songListContainer w-full text-white">
+      <div className="song flex justify-between p-4 w-3/4 ">
         <div className="flex ">
-          <p className="mr-3">4</p>
+          <p className="mr-3">1</p>
           <img
             className="w-5 mr-3"
-            src="https://i.redd.it/wyh755z4ral51.png"
+            src="https://wp.hnhh.com/wp-content/uploads/2023/10/for-all-the-dogs.png"
             alt="first person shooter"
           />
-          <h3 className="font-semibold">Wet Dreamz</h3>
+          <h3 className="font-semibold">{song.songName}</h3>
         </div>
         <div>
-          <p>1,075,137,882</p>
+          <p>{song.numPlays}</p>
         </div>
 
         <div className="flex">
@@ -33,8 +37,10 @@ export default function Song4({}) {
             src={Like}
             alt="like--v1"
           />
-          <p>4:07</p>
+          <p>{song.duration}</p>
         </div>
+
+        {/* {heart && <h4>Favourited!</h4>} */}
       </div>
     </div>
   );

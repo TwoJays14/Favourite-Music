@@ -1,18 +1,12 @@
 import { useState } from 'react';
-const Form = () => {
-  const [input, setInput] = useState({
-    songName: '',
-    numPlays: '',
-    duration: '',
-  });
-
-  const [submittedData, setSubmittedData] = useState('');
+const Form = (props) => {
+  const { submittedData, setSubmittedData, input, setInput } = props;
 
   const handleInput = (e) => {
     const { name, value } = e.target;
 
-    setInput((prevState) => ({
-      ...prevState,
+    setInput((prevInput) => ({
+      ...prevInput,
       [name]: value,
     }));
   };
@@ -20,8 +14,19 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formattedData = `Song Name: ${input.songName}, Number of Plays: ${input.numPlays}, Track Duration: ${input.duration}`;
-    setSubmittedData(formattedData);
+    const newFormData = {
+      songName: input.songName,
+      numPlays: input.numPlays,
+      duration: input.duration,
+    };
+
+    setSubmittedData([...submittedData, newFormData]);
+
+    setInput({
+      songName: '',
+      numPlays: '',
+      duration: '',
+    });
   };
 
   return (
@@ -64,7 +69,6 @@ const Form = () => {
           Submit
         </button>
       </form>
-      <div className="text-white flex flex-col p-5">{submittedData}</div>
     </>
   );
 };
